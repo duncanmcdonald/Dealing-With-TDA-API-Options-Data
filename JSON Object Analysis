@@ -1,0 +1,46 @@
+JSON data structure from object returned by get_option_chain
+Take a look at the JSON file example included in this repo.
+
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays
+
+When you convert from JSON to Python, JSON objects are converted into their Python equivalents:
+JSON    Python
+Object  dict	
+Array   list	
+Array   tuple	
+String  str		
+Number  int		
+Number  float	
+True    true
+False   false
+Null    none	
+
+The important ones in terms of structure are Object -> dict and Array -> list. A list can contain any arbitrary Python object, including a dict or another list. Same with a dictionary. Dictionaries are organized as keys and values, but the values can be any Python object as well as strings/numbers.
+
+This structure can be decomposed as an intial set of keys and values (e.g. "symbol": "MSFT"), but then you'll see a dict that has"putExpDateMap" as a key and a dict as the value. This dict has a date as a key (e.g. "2021-05-21:3", the option chain date) and a dict as the value (one for each option chain date) that contains a dict with the strike price as the key (e.g. "215.0") and a list as the value. This list has only one member, a dict. The dictionary is made up of straightforwar key/value pairs (e.g. "putCall": "PUT") where the key and value are colon seperated and the pairs are comma seperated. This is the bottom of the hierarchy.
+
+dict
+	key:value pairs
+	key (putExpDateMap): dict
+		key (option chain date): dict	
+			key(strike price): list
+				dict (only item in the list)
+					key:value pairs (bottom of hierarchy)
+			key(next strike price): list
+				dict (only item in the list)
+					key:value pairs  (bottom of hierarchy)
+      and so on until all of the strikes are listed...
+		key (next option chain date): dict	
+			key(strike price): list
+				dict (only item in the list)
+					key:value pairs (bottom of hierarchy)
+			key(next strike price): list
+				dict (only item in the list)
+					key:value pairs  (bottom of hierarchy)
+      and so on until all of the strikes are listed...
+		and so on until all of the option chain dates are listed...
+
+Because of this complicated structure decomposing recursively works quite well.
