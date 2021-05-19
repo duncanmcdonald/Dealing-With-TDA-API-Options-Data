@@ -21,7 +21,7 @@ def print_nested(dict_obj):
 TDSession = TDClient(
     client_id = os.environ['TDAMERITRADE_CLIENT_ID'],
     redirect_uri = 'http://localhost',
-    credentials_path='C:/Users/dmcdo/Documents/Trading/td-ameritrade-python-api-0.3.5/samples/credentials.json'
+    credentials_path='[put your path here]/credentials.json'
 )
 
 # Login to the session
