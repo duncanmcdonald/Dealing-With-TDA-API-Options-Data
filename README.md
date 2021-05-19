@@ -5,7 +5,7 @@ I've created a couple of Python examples that will:
 
 * Print out on your console every key/value pair in the JSON object
 
-* Write the retrieved JSON object to a JSON file on your local machine
+* Write the retrieved JSON object to a JSON file on your local machine. The file included here, option_chain.json, has an example of the output.
 
 If you are looking for other working code examples, I have found that these GitHub projects are a good source of working code modules for the TDA API:
 
