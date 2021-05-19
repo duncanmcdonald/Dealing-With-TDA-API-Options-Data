@@ -18,3 +18,5 @@ There are other projects out there, but I have only tested/used the above.
 Another thing to mention. TD Ameritrade limits API requests to 120/minute. If you exceed that rate their servers will start refusing the connection and return an error message about how you have exceeded the transaction limit. These examples are only one-shot so you won't run into that problem here.
 
 Last, it seems that dealing with authorization (OAuth) is a common stumbling block when getting started with the TDA API. Try the example at [td-ameritrade-python-api](https://github.com/areed1192/td-ameritrade-python-api) to get started.
+
+Feedback or advice? dmcdonald999@gmail.com Reddit: u/Duncan999
